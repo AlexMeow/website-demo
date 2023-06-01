@@ -1,0 +1,151 @@
+.bg {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./2273-modified3.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.mainRegion {
+  display: flex;
+  padding: 24px;
+
+  position: absolute;
+  width: 650px;
+  height: 850px;
+  top: 60px;
+
+  background-color: rgba(255, 255, 255, 0.5);
+
+  box-shadow: 0px 5px 10px 5px rgba(222, 231, 255, 0.25);
+  border-radius: 4px;
+}
+
+.flexContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.registerForm {
+  position: absolute;
+  top: 72px;
+  left: 105px;
+  right: 105px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 1.5rem;
+  box-sizing: border-box;
+}
+
+.snsBtn {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  font-size: 16px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  width: 100%;
+  height: 52px;
+
+  background: #FFFFFF;
+  border: 1px solid #00879e;
+  border-radius: 4px;
+  color: #00879e;
+}
+
+.snsBtn:active {
+  background: #00879e;
+  color: #FFFFFF;
+}
+
+.inputTextArea {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+
+  display: flex;
+  flex-direction: row;
+  padding: 16px 1rem;
+  box-sizing: border-box;
+
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  /* background: #F1F5FF; */
+  border-radius: 4px;
+
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.inputTextArea::placeholder {
+  font-weight: normal;
+}
+
+.inputPasswordArea {
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+
+.miniPlaceholder {
+  position: absolute;
+  margin: 0.1rem 12px;
+  font-size: 8px;
+  top: 0px;
+}
+
+.returnBtn:hover {
+  text-decoration-line: underline;
+  text-decoration-color: #00879e;
+  text-decoration-thickness: 2px;
+  font-weight: bold;
+}
+
+.splitLine {
+  height: 5px;
+  width: 70%;
+  text-align: center;
+  border-bottom: 2px solid #000
+}
+
+/* 
+   Responsive web design for mobile device, 
+   triggered when device's width is less than 600px.
+*/
+@media (max-width: 600px) {
+  .bg {
+    background-size: contain;
+    background-position: left bottom;
+  }
+
+  .mainRegion {
+    padding: 1.5rem 1rem;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+  }
+
+  .registerForm {
+    left: 0;
+    right: 0;
+    margin: 1rem;
+  }
+}
