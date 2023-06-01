@@ -1,8 +1,8 @@
 {
-  "name": "sign-up-page",
+  "name": "website-demo",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://alexmeow.github.io/sign-up-page-demo",
+  "homepage": "https://alexmeow.github.io/website-demo",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",

@@ -3,7 +3,7 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Browse online
-Visit the web page: https://alexmeow.github.io/sign-up-page/
+Visit the web page: https://alexmeow.github.io/website-demo/
 
 ## Install Locally (Windows OS)
 To install this app locally, you need to install **npm** first.
