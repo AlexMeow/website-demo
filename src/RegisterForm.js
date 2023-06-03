@@ -2,13 +2,13 @@ import "./RegisterForm.css";
 import React, { useState } from "react";
 // Import Font Awesome Icon libraries.
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGoogle, faFacebookF } from "@fortawesome/free-brands-svg-icons";
+import { faGoogle, faFacebookF, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { faCircleCheck, faArrowLeft, faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [isMinLengthValid, setMinLengthValid] = useState(false);
-  const [isDigitRequiredValid, setDigitRequiredValid] = useState(false);
+  const [isDigitAndLetterRequiredValid, setDigitAndLetterRequiredValid] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [eyeClicked, setEyeClicked] = useState(false);
   const [firstNameHasInput, setFirstNameHasInput] = useState(false);
@@ -21,6 +21,10 @@ const RegisterForm = () => {
     email: "",
     agreeTerms: false,
   });
+
+  const handleSnsBtnClick = (e) => {
+    e.preventDefault();
+  }
 
   // Triggered when user inputing something.
   const handleInputChange = (e) => {
@@ -67,8 +71,8 @@ const RegisterForm = () => {
 
     // Check if password is valid.
     const hasMinLength = value.length >= 8;
-    // Regular expression test for containing at least one digit.
-    const hasDigitRequired = /\d/.test(value);
+    // Regular expression test for containing at least one digit, one lower case and one upper case letter.
+    const hasDigitAndLetterRequired = (/\d/.test(value) && /[A-Z]/.test(value) && /[a-z]/.test(value));
 
     // Check if password has been input, if not, placeholder will be default style.
     if (value)
@@ -78,7 +82,7 @@ const RegisterForm = () => {
 
     // Update state.
     setMinLengthValid(hasMinLength);
-    setDigitRequiredValid(hasDigitRequired);
+    setDigitAndLetterRequiredValid(hasDigitAndLetterRequired);
   };
 
   // When checkbox has been checked, set agreeTerms as 'true'.
@@ -105,40 +109,20 @@ const RegisterForm = () => {
   return (
     <div className="bg">
       <div className="mainRegion">
-        <a className="returnBtn"><FontAwesomeIcon icon={faArrowLeft} /> Back</a>
+        <a className="returnBtn" href="#"><FontAwesomeIcon icon={faArrowLeft} /> Back</a>
         <form className="registerForm" onSubmit={handleFormSubmit}>
-          <strong style={{fontSize: "18px"}}>Start from free</strong>
-          <h2>Create an account</h2>
-          <div className="flexContainer">
-            <button className="snsBtn">
-                <FontAwesomeIcon size="lg" icon={faGoogle} />
-                <p>Sign up with Google</p>
-            </button>
-            <button className="snsBtn">
-              <FontAwesomeIcon size="lg" icon={faFacebookF} />
-              <p>Sign up with Facebook</p>
-            </button>
+          <div className="title" style={{textAlign: "center"}}>
+            <h2>Create Your Account</h2>
+            <p style={{marginTop: "0.5rem", color: "gray", fontSize: "14px"}}>Register a free account and get started!</p>
           </div>
-
-          <div 
-            style={{
-              display: "flex", 
-              alignItems: "center", 
-              marginBottom: "0.5rem",
-              flex: 1
-            }}
-          >
-            <strong style={{width: "100%"}}>Or use your email for registration</strong>
-            <p className="splitLine"></p>
-          </div>
-
+          
           <div className="flexContainer">
             <div style={{position: "relative"}}>
               <input
                 className="inputTextArea"
                 type="text"
                 name="firstName"
-                placeholder="First Name"
+                placeholder="First Name..."
                 value={formData.firstName}
                 onChange={handleInputChange}
               />
@@ -149,7 +133,7 @@ const RegisterForm = () => {
                 className="inputTextArea"
                 type="text"
                 name="lastName"
-                placeholder="Last Name"
+                placeholder="Last Name..."
                 value={formData.lastName}
                 onChange={handleInputChange}
               />
@@ -162,7 +146,7 @@ const RegisterForm = () => {
               className="inputTextArea"
               type="email"
               name="email"
-              placeholder="E-mail"
+              placeholder="E-mail..."
               value={formData.email}
               onChange={handleInputChange}
               style={{width: "100%"}}
@@ -175,7 +159,7 @@ const RegisterForm = () => {
               className="inputTextArea"
               type={showPassword ? "text" : "password"}
               name="password"
-              placeholder="Password"
+              placeholder="Password..."
               value={password}
               onChange={handlePasswordChange}
               required
@@ -195,7 +179,7 @@ const RegisterForm = () => {
             {passwordHasInput && <span className="miniPlaceholder">Password</span>}
           </div>
 
-          <div style={{marginTop: "-0.5rem", fontSize: "12px"}}>
+          <div style={{marginTop: "-1rem", fontSize: "12px", textAlign: "center"}}>
             {
               isMinLengthValid ? 
               (<span><FontAwesomeIcon color="mediumaquamarine" icon={faCircleCheck} /> 8 Characters min.</span>) :
@@ -203,39 +187,56 @@ const RegisterForm = () => {
             }
             <span style={{ margin: "0 10px" }}></span>
             {
-              isDigitRequiredValid ? 
-              (<span><FontAwesomeIcon color="mediumaquamarine" icon={faCircleCheck} /> At least one digit.</span>) :
-              (<span style={{color: "gray"}}><FontAwesomeIcon icon={faCircleCheck} /> At least one digit.</span>)
+              isDigitAndLetterRequiredValid ? 
+              (<span><FontAwesomeIcon color="mediumaquamarine" icon={faCircleCheck} /> At least one digit, one lower case and one upper case letter.</span>) :
+              (<span style={{color: "gray"}}><FontAwesomeIcon icon={faCircleCheck} /> At least one digit, one lower case and one upper case letter.</span>)
             }
           </div>
 
-          <label style={{display: "flex", gap: "0.5rem"}}>
-            <input
-              type="checkbox"
-              name="agreeTerms"
-              checked={formData.agreeTerms}
-              onChange={handleCheckboxChange}
-            />
-            Agree with <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
-          </label>
-
-          <label style={{display: "flex", gap: "0.5rem"}}>
-            <input
-              type="checkbox"
-              name="agreeTerms"
-            />
-            I want to receive news and promotions by email.
-          </label>
+          <div className="checkBoxContainer">
+            <label style={{display: "flex", gap: "0.5rem"}}>
+              <input
+                type="checkbox"
+                name="agreeTerms"
+                checked={formData.agreeTerms}
+                onChange={handleCheckboxChange}
+              />
+              Agree with <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.
+            </label>
+            <label style={{display: "flex", gap: "0.5rem"}}>
+              <input
+                type="checkbox"
+                name="agreeTerms"
+              />
+              I want to receive news and promotions by email.
+            </label>
+          </div>
 
           <button type="submit" disabled={!formData.agreeTerms}>
-            Create an Free Account!
+            Sign Up
           </button>
-
-          <p style={{color: 'gray', textAlign: "center", margin: 0}}>Already have an account? <a href="#">Log in</a></p>
+          <h4 style={{textAlign: "center"}}>Or sign up with social account</h4>
+          <div className="snsBtnContainer">
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+                <FontAwesomeIcon size="lg" icon={faGoogle} />
+            </button>
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+              <FontAwesomeIcon size="lg" icon={faFacebookF} />
+            </button>
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+              <FontAwesomeIcon size="lg" icon={faTwitter} />
+            </button>
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+              <FontAwesomeIcon size="lg" icon={faLinkedin} />
+            </button>
+          </div>
+          <p style={{textAlign: "center", margin: 0}}>Already have an account? <a href="#">Log in</a>.</p>
+          <p style={{color: "gray", fontSize: "12px", textAlign: "center", marginTop: "2rem"}}>
+            <a href="https://www.freepik.com/free-vector/mesh-wireframe-sphere_849173.htm#query=fractal%20global%20Transparent&position=45&from_view=search&track=ais" target="_blank">Image by starline</a> on Freepik
+          </p>
         </form>
       </div>
     </div>
-
   );
 };
 

@@ -1,11 +1,11 @@
 .bg {
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   background-image: url(./2273-modified3.png);
   background-size: cover;
   background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
 }
 
 .mainRegion {
@@ -13,13 +13,13 @@
   padding: 24px;
 
   position: absolute;
-  width: 650px;
-  height: 850px;
-  top: 60px;
+  width: 625px;
+  height: 825px;
+  top: 16px;
 
   background-color: rgba(255, 255, 255, 0.5);
 
-  box-shadow: 0px 5px 10px 5px rgba(222, 231, 255, 0.25);
+  box-shadow: 0px 5px 10px 5px rgba(157, 185, 217, 0.2);
   border-radius: 4px;
 }
 
@@ -31,15 +31,24 @@
   gap: 1rem;
 }
 
+.snsBtnContainer {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  margin-bottom: 0.5rem;
+}
+
 .registerForm {
   position: absolute;
-  top: 72px;
+  top: 48px;
   left: 105px;
   right: 105px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1.5em;
   box-sizing: border-box;
 }
 
@@ -51,23 +60,28 @@
   box-sizing: border-box;
 
   display: flex;
-  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: center;
 
   position: relative;
-  width: 100%;
-  height: 52px;
+  width: 3rem;
+  height: 3rem;
 
   background: #FFFFFF;
-  border: 1px solid #00879e;
-  border-radius: 4px;
+  border: 2px solid #00879e;
+  border-radius: 50%;
   color: #00879e;
 }
 
-.snsBtn:active {
+.snsBtn:hover {
   background: #00879e;
+  color: #FFFFFF;
+}
+
+.snsBtn:active {
+  background: #004b58;
+  border: 2px solid #004b58;
   color: #FFFFFF;
 }
 
@@ -79,16 +93,18 @@
   flex-direction: row;
   padding: 16px 1rem;
   box-sizing: border-box;
+  margin: 0.5rem 0 0.5rem 0;
 
   position: relative;
   width: 100%;
   height: auto;
 
-  /* background: #F1F5FF; */
-  border-radius: 4px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 2px solid #00879e;
 
-  font-weight: bold;
-  font-size: 16px;
+  font-weight: 500;
+  font-size: 18px;
 }
 
 .inputTextArea::placeholder {
@@ -103,7 +119,7 @@
 
 .miniPlaceholder {
   position: absolute;
-  margin: 0.1rem 12px;
+  margin: 0.7rem 12px;
   font-size: 8px;
   top: 0px;
 }
@@ -115,11 +131,12 @@
   font-weight: bold;
 }
 
-.splitLine {
-  height: 5px;
-  width: 70%;
-  text-align: center;
-  border-bottom: 2px solid #000
+.checkBoxContainer {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.8rem;
 }
 
 /* 
@@ -141,11 +158,22 @@
     right: 0;
     bottom: 0;
     box-sizing: border-box;
+    box-shadow: none;
   }
 
   .registerForm {
     left: 0;
     right: 0;
     margin: 1rem;
+  }
+
+  .inputTextArea {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 601px) {
+  .bg {
+    background-position: center;
   }
 }
