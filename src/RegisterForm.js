@@ -116,6 +116,23 @@ const RegisterForm = () => {
             <p style={{marginTop: "0.5rem", color: "gray", fontSize: "14px"}}>Register a free account and get started!</p>
           </div>
           
+          <div className="snsBtnContainer">
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+                <FontAwesomeIcon size="lg" icon={faGoogle} />
+            </button>
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+              <FontAwesomeIcon size="lg" icon={faFacebookF} />
+            </button>
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+              <FontAwesomeIcon size="lg" icon={faTwitter} />
+            </button>
+            <button className="snsBtn" onClick={handleSnsBtnClick}>
+              <FontAwesomeIcon size="lg" icon={faLinkedin} />
+            </button>
+          </div>
+
+          <h4 style={{textAlign: "center"}}>Or use your email for registration</h4>
+
           <div className="flexContainer">
             <div style={{position: "relative"}}>
               <input
@@ -215,22 +232,9 @@ const RegisterForm = () => {
           <button type="submit" disabled={!formData.agreeTerms}>
             Sign Up
           </button>
-          <h4 style={{textAlign: "center"}}>Or sign up with social account</h4>
-          <div className="snsBtnContainer">
-            <button className="snsBtn" onClick={handleSnsBtnClick}>
-                <FontAwesomeIcon size="lg" icon={faGoogle} />
-            </button>
-            <button className="snsBtn" onClick={handleSnsBtnClick}>
-              <FontAwesomeIcon size="lg" icon={faFacebookF} />
-            </button>
-            <button className="snsBtn" onClick={handleSnsBtnClick}>
-              <FontAwesomeIcon size="lg" icon={faTwitter} />
-            </button>
-            <button className="snsBtn" onClick={handleSnsBtnClick}>
-              <FontAwesomeIcon size="lg" icon={faLinkedin} />
-            </button>
-          </div>
+
           <p style={{textAlign: "center", margin: 0}}>Already have an account? <a href="#">Log in</a>.</p>
+
           <p style={{color: "gray", fontSize: "12px", textAlign: "center", marginTop: "2rem"}}>
             <a href="https://www.freepik.com/free-vector/mesh-wireframe-sphere_849173.htm#query=fractal%20global%20Transparent&position=45&from_view=search&track=ais" target="_blank">Image by starline</a> on Freepik
           </p>
