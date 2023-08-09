@@ -1,0 +1,5 @@
+製作線上塗鴉板系統(WebSocket)
+-> 因為只展示前端DEMO，Server先用localhost
+-> 找一個現成可用的套件來實作塗鴉板本體
+-> 可以加入一個協作文件功能(類似Notion、Google Doc)或兩者合一
+-> 儲存畫布(或文件)到local storage
